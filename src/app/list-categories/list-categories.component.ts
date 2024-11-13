@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Categorie } from '../Models/categorie';
+import { ShortList } from '../Models/short-list.model';
 
 @Component({
   selector: 'app-list-categories',
@@ -52,7 +53,18 @@ export class ListCategoriesComponent {
     }
  ];
  titre: string = '';  // Propriété liée à l'input de recherche
+ shortList: ShortList[] = [];
 
+  addToShortList(category: Categorie) {
+    const shortListItem: ShortList = {
+      id: this.shortList.length + 1,
+      idUser: 1, // Use a fixed or predefined user ID
+      idElement: category.id,
+      typeElement: 'category'
+    };
+    this.shortList.push(shortListItem);
+    console.log(`Added to shortlist: ${category.title}`);
+  }
 
  showDesc(x: string) {
    alert(x);

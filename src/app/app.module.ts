@@ -16,6 +16,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ProductsCategoryComponentComponent } from './products-category-component/products-category-component.component';
 import { SearchPipe } from './search.pipe';
 import { FormProductComponent } from './form-product/form-product.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormProductComponent } from './form-product/form-product.component';
     NotfoundComponent,
     ProductsCategoryComponentComponent,
     SearchPipe,
-    FormProductComponent
+    FormProductComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

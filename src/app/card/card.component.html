@@ -1,0 +1,13 @@
+<div>
+    <img
+        [src]="category.image"
+        [alt]="category.title"
+        class="img-fluid h-50 w-75"
+    />
+    <h3 appHighlighter>{{category.title | uppercase}}</h3>
+    <p>{{category.description}}</p>
+    <button class="btn btn-primary" *ngIf="category.available else alt" [routerLink]="['/productsByCategory', category.id]" [queryParams]="{'name':category.title}">Voir produits</button>
+    <button class="btn btn-primary" routerLink="categoryDetails" [queryParams]="{'desc':category.description}">Voir details</button>
+    <button class="btn btn-primary" (click)="onAddToShortlist()">Add to Shortlist</button>
+    <ng-template #alt><p style="color: red">Categorie non dispponible</p></ng-template>
+</div>
