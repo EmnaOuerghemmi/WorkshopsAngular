@@ -1,0 +1,21 @@
+<div class="container">
+  <span>Search: </span><input type="text" [(ngModel)]="titre">
+  <div class="row" >
+    
+    <div class="col-md-4" style="margin-bottom: 20px" *ngFor="let cat of categories | search: titre ">
+  
+      <img
+        [src]="cat.image"
+        [alt]="cat.title"
+        class="img-fluid h-50 w-75"
+        (click)="showDesc(cat.description)"
+        [routerLink]="['/detailsCategory', cat.id]"
+      />
+      <h3 appHeighlight>{{cat.title| uppercase}}</h3>
+      <button  class="btn btn-primary" *ngIf="cat.available else alt" [routerLink]="['/productsByCategory',cat.id]">Voir produits</button>
+       <ng-template #alt><p style="color: red;">Categorie non disponible</p></ng-template>
+     
+      </div>
+    
+  </div>
+</div>

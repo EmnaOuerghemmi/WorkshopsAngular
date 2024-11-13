@@ -1,0 +1,23 @@
+
+<div class="container">
+  <div class="row">
+   
+
+    <div class="col-md-4" style="margin-bottom: 20px" *ngFor="let product of productsByCategory">
+      <img
+        [src]="product.image"
+        [alt]="product.name"
+        class="img-fluid h-50 w-75"
+        [routerLink]="['/detailsCategory', product.id]"
+      />
+      <h3 appHeighlight>{{ product.name | uppercase }}</h3>
+      <ng-template #alt>
+        <p style="color: red;">Categorie non disponible</p>
+      </ng-template>
+    </div>
+     <!-- Bouton "Add Product" -->
+     <div class="col-md-12">
+      <a routerLink="/add-product" class="btn btn-primary">Add Product</a>
+    </div>
+  </div>
+</div>
