@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,QueryList,ViewChildren  } from '@angular/core';
 import { Categorie } from '../Models/categorie';
 import { ShortList } from '../Models/short-list.model';
-
+import { CardComponent } from '../card/card.component';
 @Component({
   selector: 'app-list-categories',
   templateUrl: './list-categories.component.html',
@@ -54,19 +54,37 @@ export class ListCategoriesComponent {
  ];
  titre: string = '';  // Propriété liée à l'input de recherche
  shortList: ShortList[] = [];
-
-  addToShortList(category: Categorie) {
-    const shortListItem: ShortList = {
-      id: this.shortList.length + 1,
-      idUser: 1, // Use a fixed or predefined user ID
-      idElement: category.id,
-      typeElement: 'category'
-    };
-    this.shortList.push(shortListItem);
-    console.log(`Added to shortlist: ${category.title}`);
-  }
+  @ViewChildren( CardComponent) cardList!: QueryList<CardComponent>;
 
  showDesc(x: string) {
    alert(x);
  }
+ ngAfterViewInit(){
+
+  //console.log(this.cardList);
+  this.cardList.forEach((card)=>{
+    let data = this.categories.find(e=>e.id==card.id);
+    if (data?.available== false){
+      card.btnText='Indisponible';
+      card.isAvailable=false;}
+    else
+      {card.btnText='Voir Produits';
+      card.isAvailable=true;}
+      
+      
+    });
+
+  
+}
+
+ addToShortList(data:any){
+
+  if (this.shortList.find(e=>e.idElement==data.idElement && e.idUser==data.idUser)){
+    alert('Element deja dans shortList');
+  }
+else{
+  this.shortList.push({id:1,idUser:data.idUser,idElement:data.idElement,typeElement:'categorie'});}
+console.log(this.shortList);
+
+}
 }

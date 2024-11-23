@@ -39,7 +39,7 @@ export class FormProductComponent {
     if (this.productForm.valid) {
       const newProduct: Product = {
         id: this.products.length + 1, // ID auto-incrémenté
-        name: this.productForm.get('name')?.value,
+       name: this.productForm.get('name')?.value,
         image : this.productForm.get('image')?.value,
         categoryId: this.productForm.get('categoryId')?.value,
         description: this.productForm.get('description')?.value,

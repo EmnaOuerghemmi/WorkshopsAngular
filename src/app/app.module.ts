@@ -17,6 +17,8 @@ import { ProductsCategoryComponentComponent } from './products-category-componen
 import { SearchPipe } from './search.pipe';
 import { FormProductComponent } from './form-product/form-product.component';
 import { CardComponent } from './card/card.component';
+import { DetailsCategoriesComponent } from './details-categories/details-categories.component';
+import { ListProductsComponent } from './list-products/list-products.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { CardComponent } from './card/card.component';
     ProductsCategoryComponentComponent,
     SearchPipe,
     FormProductComponent,
-    CardComponent
+    CardComponent,
+    DetailsCategoriesComponent,
+    ListProductsComponent
   ],
   imports: [
     BrowserModule,

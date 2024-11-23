@@ -21,11 +21,13 @@
   </div>
 </div> -->>
 <div class="container">
-  <span>Search: </span><input type="text" [(ngModel)]="titre">
+  <span>Search: </span><input type="text" [(ngModel)]="titre" placeholder="Rechercher une catégorie">
   <div class="row">
-    <div class="col-md-4" style="margin-bottom: 20px" *ngFor="let cat of categories | search: titre ">
-      <!-- Utilisation de CardComponent pour chaque catégorie -->
-      <app-card [category]="cat" (addToShortlist)="addToShortList(cat)"></app-card>
+    <div class="col-md-4" style="margin-bottom: 20px" *ngFor="let cat of categories">
+      
+      <app-card [title]="cat.title" [image]="cat.image" [description]="cat.description" [id]="cat.id" [btnText]="'Voir Produits'" (sender)="addToShortList($event)"></app-card>
+      
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>
